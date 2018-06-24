@@ -1,4 +1,3 @@
-import lexnlp.extract.en.amounts
 import lexnlp.extract.en.conditions
 import lexnlp.nlp.en.segments.titles
 import lexnlp.nlp.en.segments.sections
