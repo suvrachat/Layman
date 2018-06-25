@@ -10,7 +10,7 @@ import lexnlp.extract.en.dates
 import lexnlp.extract.en.regulations
 import lexnlp.extract.en.urls
 from bson import json_util
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from docx import Document
 from docx.shared import Inches
 
@@ -114,5 +114,5 @@ def date_handler(obj):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
 
