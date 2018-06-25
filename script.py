@@ -1,27 +1,19 @@
 from docx import Document
 from docx.shared import Inches
 
-docx = Document('python-tests.docx')
-text_file = open("Output.txt", "w")
-s=""
-# print (docx)
+def convertFile():
+    docx = Document('uploads/input')
+    text_file = open("uploads/output", "w")
+    s=""
+    # print (docx)
 
-document = Document()
-
-
-for p in docx.paragraphs:
-
-    s+=p.text
-    s+="\r\n"
-
-text_file.write(s)
-text_file.close()
+    document = Document()
 
 
-#document.save('output')
+    for p in docx.paragraphs:
 
-# document = docx.read()
-# docText = '\n\n'.join([
-#     paragraph.text.encode('utf-8') for paragraph in document.paragraphs
-# ])
-# print (docText)
+        s+=p.text
+        s+="\r\n"
+
+    text_file.write(s)
+    text_file.close()

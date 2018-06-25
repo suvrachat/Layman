@@ -50,3 +50,4 @@ typing==3.6.2
 flask-restful
 pymongo
 reporters_db
+python-docx

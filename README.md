@@ -18,3 +18,10 @@ file: Paste text of contract
 
 CF not working : contractadvisor-translucid-juror.cfapps.sap.hana.ondemand.com/contractadvisor/title
 502 Bad Gateway: Registered endpoint failed to handle the request.
+
+--
+
+The UI is available at http://127.0.0.1:5000
+
+on Upload of a docx file, the file will be uploaded in the folder 'uploads' with filename 'input'
+the text version of the file will be available in the folder 'uploads' with filename 'output'

@@ -10,7 +10,10 @@ import lexnlp.extract.en.dates
 import lexnlp.extract.en.regulations
 import lexnlp.extract.en.urls
 from bson import json_util
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request
+from docx import Document
+from docx.shared import Inches
+
 
 app = Flask(__name__, static_url_path='')
 
@@ -26,6 +29,14 @@ def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       f.save('./uploads/input')
+      docx = Document(f)
+      text_file = open("uploads/output", "w")
+      s=""
+      for p in docx.paragraphs:
+      	s+=p.text
+      	s+="\r\n"
+      text_file.write(s)
+      text_file.close()
       return 'file uploaded successfully'
 
 @app.route('/contractadvisor/<string:task_id>', methods=['POST'])

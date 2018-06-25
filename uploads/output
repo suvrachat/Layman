@@ -1,0 +1,206 @@
+
+
+Additional guidelines:
+All graphical descriptions of architecture aspects must follow SAP standards for modeling: 
+Technical Architecture Modeling () 
+SOA modeling using ARIS. 
+Do not delete non-applicable/optional items or sections of this template, but mark them with "Not relevant" and give a short reasoning why this is the case. This makes reading easier for readers which were not involved in the design discussions.
+The design document has to be available in English language.
+Always store your documents in document management systems such as cProjects/cFolders and avoid entering links to documents on shares or servers.
+Describe the changes and revisions of this document in the table on the title page.
+Document versions follow the scheme x.y.z. 
+When you change a document, create a new version and keep the old document version. Make sure that “Track Changes” is turned on in the new version and accept all existing changes that were tracked in the old document version. Then insert a new line in the version table on the title page.
+There are three types of changes, which affect the version number as follows
+Status Changes:
+Draft versions prior to review meeting => starting with 1.0
+Version after action items of review meeting have been completed => starting with 2.0
+Version after implementation (starting with 3.0)
+Major Changes: Increment y-part of document version for complete revisions (e.g. 1.3 to 1.4)
+Minor Changes: Increment z-part of document version for minor corrections (e.g. 1.3 to 1.3.1)
+Changes after sign off of the document have to be aligned with the verifier(s) of the documents. If required a new review for the document has to be set up. 
+Consider update of existing central documents, which could be affected by this design (blue book, Architecture documentation, …).
+To update the table of content of this document, mark it and press <F9>
+Template Owner: Juergen Heymann; last changed: March 2010
+Contact the template owner if you have any ideas to improve this template.
+
+Contents
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+General Information
+Stakeholders and Roles
+List all people who were involved in the creation of this document and who should be involved in the final review and sign-off of this document.
+References
+In this table give a list of all documents that are input / assigned to the design scope. 
+Typical references: ACDs and SRSs (mandatory), UI spec, Architecture guidelines, SOA content, work packages, naming conventions, …
+IP Compliance and Patents
+You must always store architecture and design documents 'IP safe' (currently cPro) so that (if needed) SAP can prove that a certain idea / concept was invented / designed at a certain point in time. 
+
+In addition, consider patents: Does your design extend the current state-of-the-art in any way? If you think so, or even if you think it might, please go to the  Wiki and follow the process described there. Not only is it required of all employees to notify SAP if they make an invention, but participation in the SAP patent program is rewarded in several ways (including money) – so by taking part in the SAP patent program, you can help SAP protect its innovation and receive recognition along the way.
+
+Design
+Give a brief overview of the component / feature design, i.e. of the rest of the document. A reader / reviewer should be able to decide from this overview if they need to read the rest. 
+
+Key Requirements and Design GoalsBriefly describe the key requirements and design goals that drive this design. Consider the requirements from the release backlog but also quality attributes and non-functional requirements (they should all be in the backlog as well). The reference to the backlog / requirements is given in References above.  
+Business Context
+
+CCE on Cloud is an application where the Shippers and Carriers will connect with each other to make the business run simple. After being registered, the Carriers have to maintain all the lanes (from-to city) on which it will be operating the transportation business. Shippers may also maintain the lanes on which it will have the shipment business. The Shippers can search the Carriers based on its business requirement (lane on which it has shipment requirement) or by Carrier name itself and then create a network with the preferred carrier. The process will be called Carrier Connect. Once the carrier connect is done by a shipper then the shipment requirement will consider those carriers on priority. 
+Key Requirements
+
+The possibility in the application for the Shipper to connect with the Carriers by choosing a lane and selecting from the list of carriers, which operate on that lane.
+Design Challenges
+Major Building Blocks – High Level Design 
+Global Catalog
+Flow diagram
+
+
+Sequence diagram 
+
+
+User Interface
+
+UI design is very important for usability and the end-user perception of your software. Reviewing the UI of a feature is just as important as architecture / design topics. For major development / changes in UI, consider having a professional UI designer do or at least review the UI parts.
+
+You should follow the UCD (user centered design) process and their templates and process. Refer to the UCD documents here. 
+If you cannot follow the full UCD, provide at least UCD use cases and low-fidelity mock-ups for the user interactions (transactions, pop-ups, config screens, ... ) e.g. with Powerpoint or the like. Focus on planned interaction steps, layout, texts, ... that will be visible to end-users.
+
+
+Design Details Documentation
+This section is not part of the review but part of the developer's / team's documentation of relevant details. Write only what is needed to understand non-obvious details and what is not documented / contained in the code/system itself. 
+
+
+Database DesignData Views describe the database layout including: tables, key fields, additional fields, and relations between tables. Consider the object-relational mapping between classes/objects and the database tables.
+Relevance: needed when database tables are created or extended.
+Use entity-relationship diagrams (UML class diagrams using attribute stereotypes to mark key fields).
+Distinguish between system, customizing, and application tables, e.g. by using stereotypes for the delivery class.
+
+Archiving: Do not forget archiving. Details can be found in the Information Lifecycle Management product standard. Portal link:
+ 
+
+
+ER Diagram
+
+
+
+Testability and Test Environment
+Briefly document  the design elements that support isolated testability of this component / feature (e.g. mocking  interfaces, test approach). 
+From a development perspective describe what should be tested and how (manual vs. automated, which unit test framework is used, which mock object framework or generator, or which capture-replay mechanism).
+If there are special requirements for test execution, describe the test environment that is required to run the tests: 
+Which system landscape is necessary?
+Which customizing settings (standard customizing, business content) are prerequisites?
+Which application data (master data and transaction data) is required? How is it generated?
+Note: all implemented unit tests should be self contained. That means unit tests should not rely on any external context e.g. certain customizing or master data. Standard delivery customizing or business content can be used. If any external data or settings are needed they should be created in the test class itself or faked via mock objects. 
+
+Complex Algorithms and Applied Patterns
+
+If this design involves complex logic / algorithms, sketch the algorithms you are using. Make clear which parts of your development are driven by used frameworks or APIs and which parts really need new concepts which must be described here.
+Try to structure your algorithms according to software design patterns (see e.g. ) Explain why you think that this pattern matches the requirement, Consider the aspects of possible future extensions to your code, supportability, testability and simplicity. 
+
+Design Alternatives and Trade-Offs
+If there were significant design alternatives and trade-offs, describe them briefly here. The purpose is to later remember why a certain design decision was made. When a decision between two alternatives was not trivial, it is usually worth documenting.
+
+It is a good practice to document design alternatives as follows:
+Definition of the trade-off / topic
+What are the competing 'forces' (that create the design tension / trade-off)
+Alternatives 
+Chose alternative with reason. 
+
+Guide to the Implementation
+
+3.6 	SAP Document Service
+This section should be written after the implementation is completed. Briefly describe ‘where to find what’ in the code, DDIC, or other tools / repositories that are relevant. 
+
+This information is very useful for yourself after a few months but also for handovers of code responsibility. 
+
+	The SAP HANA Cloud Platform, document service provides an on-demand content repository for unstructured or semi-structured content.
+Overview
+Applications access it using the OASIS standard protocol Content Management Interoperability Services (CMIS). Java applications running on SAP HANA Cloud Platform can easily consume the document service using the provided client library. A JavaScript client library is currently being developed. Since the document service is exposed using a standard protocol, it can also be consumed by any other technology that supports the CMIS protocol.
+The following figure illustrates the document service's architecture:
+
+The CMIS standard defines:
+A domain model and service bindings that can be used by applications to work with a content management repository
+An abstraction layer for controlling diverse document management systems and repositories using Web protocols
+CMIS provides a common data model covering typed files and folders with generic properties that can be set or read. There is a set of services for adding and retrieving documents (called objects). CMIS defines an access control system, a checkout and version control facility, and the ability to define generic relations. CMIS defines the following protocol bindings, which use WSDL with Simple Object Access Protocol (SOAP) or Representational State Transfer (REST):
+The Atom Publishing (AtomPub) Protocol
+The JavaScript Object Notation (JSON) format
+The consumption of CMIS-enabled document repositories is easy using the Apache Chemistry libraries. Apache Chemistry provides libraries for several platforms to consume CMIS using Java, PHP, .Net, or Python. The subproject OpenCMIS, which includes the CMIS Java implementation, also includes tools around CMIS, like the CMIS Workbench, which is a desktop client for CMIS repositories for developers.
+Since the SAP HANA Cloud Platform, document service API includes the OpenCMIS Java library, applications can be built on SAP HANA Cloud Platform that are independent of a specific content repository.
+
+Access from External Applications
+
+Overview
+The services on SAP HANA Cloud Platform can be consumed by applications that are deployed on SAP HANA Cloud Platform but not from external applications. There are cases, however, where applications want to access content in the cloud but cannot be deployed in the cloud.
+The figure below describes a mechanism with which this scenario can be supported and is followed by an explanation:
+
+This can be addressed by deploying an application on SAP HANA Cloud Platform that accepts incoming requests from the Internet and forwards them to the document service. We refer to this type of application as a proxy bridge. The proxy bridge is deployed on SAP HANA Cloud Platform and runs in an account using the common SAP HANA Cloud Platform patterns. The proxy bridge is responsible for user authentication. The resources consumed in the document service are billed to the SAP HANA Cloud Platform account that deployed this application.
+
+Appendix
+Glossary
+If terms and/or abbreviations are non-obvious to the intended readers, briefly define them here. All new terminology has to be defined in the respective SRS and has to be aligned with responsible Knowledge Management (SAPTerm!). 
+For more readability it is recommended to include here a copy of the Glossary from the SRS.
+For more information, see also section “Abbreviations on the User Interface” in the general  (or see link Product Standard  ).
+Customizing
+
+List new and existing customizing which is important to run the developed functionality. What is delivered by SAP, what has to be setup by customers. Consider ABAP and non-ABAP parts.
+If several technical components are involved, e.g. ERP and CRM: Is it necessary to synch customizing, how is this done?
+
+This chapter should enable QM, ASM or IMS colleagues to set up the developed functionality in a test or demo system. Therefore try to cover all customizing aspects and also provide screen shots if necessary.
+Supportability Considerations
+
+Consider that the design document will serve as technical and handover documentation, so have the needs of IMS in mind: Describe known restrictions regarding restricted availability of functions in certain environments.
+List important customer exits and describe how they can be used.
+Describe known pitfalls, e.g caused by inconsistent customizing which cannot be handled properly. Situations like this might appeare during MIT. List important configuration documentation which helps to configure the system properly. 
+If possible, describe how inconsistent data can be identified and corrected (see also Analysis Tools).
+Error Analysis
+Debugging
+
+Enter tips & tricks for debugging. 
+Where to start debugging, where to put breakpoints when a problem arises? If the scenario involves processes which are spread over different components (ABAP->ABAP, J2EE->ABAP for example),: how is it possible to debug the whole process? Link to technical documentation.
+If breakpoints are shipped: List check point groups from SAAB  to activate breakpoints, and the locations of breakpoints  
+What can be manipulated (“repped”) during debugging without risk? Where do I have to exit the debugging without leaving persistent changes on the database?
+Logging and Tracing
+
+Especially for Non-ABAP environments where debugging is sometimes difficult: is it possible to use tracing to solve problems? Give keywords to search for in trace files, give advise on trace level and on the source of different trace files if applicable. 
+
+In ABAP environments: Which tool is used for logging? For the application log, give hints on how to view the results and how to interpret it. In case you are using log points, enter the checkpoint group from SAAB and describe how to use the logging results.
+If you foresee a central place where problems can occur, e.g. the call of an API to a different system,: elaborate on tracing and error handling. How is a certain error situation reflected in the trace output?
+Other Error Analysis Tools
+
+If existing: describe analysis und correction reports or transactions.
+Are there test environments which can facilitate the tracking of errors? Example: The application consists of a Java Web Application which talks to an ABAP backend. A problem occurs in the ABAP backend. A tool exists which allows for persisting the data which is sent from Java on ABAP side, it is therefore later on possible to track the problem with pure ABAP means.
+State relevant  notes that might be useful in that context.
+Other
+
+
+Important information that does not fit into one of the preceding sections…
