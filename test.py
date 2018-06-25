@@ -10,7 +10,7 @@ import lexnlp.extract.en.dates
 import lexnlp.extract.en.regulations
 import lexnlp.extract.en.urls
 from bson import json_util
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from docx import Document
 from docx.shared import Inches
 
@@ -39,9 +39,10 @@ def upload_file():
       text_file.close()
       return 'file uploaded successfully'
 
-@app.route('/contractadvisor/<string:task_id>', methods=['POST'])
+@app.route('/contractadvisor/<string:task_id>', methods=['GET'])
 def get_task(task_id):
-	text = request.form['file']
+	text = open("uploads/output", 'r').read()
+
 	if len(text)==0:
 		return "No File Found"
 	
