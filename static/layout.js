@@ -37,11 +37,19 @@
   function uploadContract(){
 	  var file;
 	  contractfile.files.length > 0 ? file = contractfile.files[0] : file="No file is uploaded"; 	 
-	  if(typeof file === "string"){
-		  alert(file);
-		  return;
-	  }
-	  alert(file.name);
+    var fd = new FormData();
+    fd.append('file', $('input[type=file]')[0].files[0])
+    $.ajax({
+      url: './uploader',  
+      type: 'POST',
+      data: fd,
+      success:function(data){
+          alert(data);
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+  });
 	  document.getElementById("main-wrapper").style.display = "block";
 	  setAccessToken();
   }

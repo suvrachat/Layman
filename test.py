@@ -15,11 +15,18 @@ from flask import Flask, jsonify, request, send_from_directory
 app = Flask(__name__, static_url_path='')
 
 @app.route('/')
-def student():
+def index():
    return send_from_directory('static', 'index.html')
 
 #Read Text File
 #text = open('testcontract.txt', 'r').read()
+
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save('./uploads/input')
+      return 'file uploaded successfully'
 
 @app.route('/contractadvisor/<string:task_id>', methods=['POST'])
 def get_task(task_id):
