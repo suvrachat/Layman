@@ -1,7 +1,7 @@
 import lexnlp.extract.en.conditions
-#import lexnlp.nlp.en.segments.titles
-#import lexnlp.nlp.en.segments.sections
-#import lexnlp.nlp.en.segments.paragraphs
+import lexnlp.nlp.en.segments.titles
+import lexnlp.nlp.en.segments.sections
+import lexnlp.nlp.en.segments.paragraphs
 import json
 import lexnlp.extract.en.citations
 import lexnlp.extract.en.definitions
@@ -86,10 +86,10 @@ def get_task(task_id):
 # print(list(lexnlp.extract.en.urls.get_urls(text)))
 
 
-#def getTitle(text):
-#   title=list(lexnlp.nlp.en.segments.titles.get_titles(text))
-#	raw_json = json.dumps(title)
-#	return(raw_json)
+def getTitle(text):
+   title=list(lexnlp.nlp.en.segments.titles.get_titles(text))
+	raw_json = json.dumps(title)
+	return(raw_json)
 
 def getSuspicious(text):
 	noOfConditions=len(list(lexnlp.extract.en.conditions.get_conditions(text)))
