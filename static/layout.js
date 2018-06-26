@@ -19,7 +19,7 @@
 
   var ENTER_KEY_CODE = 13;
   var queryInput, resultDiv, accessTokenInput,contractfile;
-
+  var defaultText = 'I did not get that , You can ask me<ol><li>Conditions of Contract</li><li>Citations in contract etc</li></ol>';
   window.onload = init;
 
   function init() {
@@ -78,11 +78,49 @@
         } catch(error) {
           result = "";
         }
-        setResponseOnNode(result, responseNode);
+        sendToServer(result,responseNode);
+        
       })
       .catch(function(err) {
         setResponseOnNode("Something goes wrong", responseNode);
       });
+  }
+  
+  function sendToServer(query,responseNode){
+	  var url="/contractadvisor/"
+	  var response;
+	  if(query===defaultText){
+		  setResponseOnNode(query,responseNode);
+		  return;  
+	  }
+	  
+	  else if(query.includes('Title')){
+		  url=url+"title";
+	  }
+	  
+	  else if(query.includes('Review')){
+		  url=url+"suspicious";
+	  }
+	  else if(query.includes("Conditions")){
+		  url=url+"conditions";
+	  }
+	  else if(query.includes("Active")){
+		  url=url+"startdate";
+	  }
+	  $.ajax({
+	      url: url,  
+	      type: 'GET',
+	      success:function(data){
+	          response=data;
+	          setResponseOnNode(response, responseNode);
+	      },
+	      error: function(error){
+		      	alert("Error Occured:"+error)
+		  },
+	      cache: false,
+	      contentType: false,
+	      processData: false
+	  });
   }
 
   function createQueryNode(query) {
