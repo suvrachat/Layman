@@ -19,7 +19,7 @@
 
   var ENTER_KEY_CODE = 13;
   var queryInput, resultDiv, accessTokenInput,contractfile;
-  var defaultText = 'I did not get that , You can ask me<ol><li>Conditions of Contract</li><li>Citations in contract etc</li></ol>';
+  var defaultText = 'I did not get that , You can ask me<ol><li>Conditions of Contract</li><li>Review of contract</li><li>Title of contract</li><li>whether contract is active</li></ol>';
   window.onload = init;
 
   function init() {
@@ -112,6 +112,16 @@
 	      type: 'GET',
 	      success:function(data){
 	          response=data;
+	          
+	          if(query.includes("Conditions")){
+	          data=data.replace("[[", "");
+	          data=data.replace("[", "");
+	          data=data.replace("[", "");
+	          data=data.split(", \"\"]");
+	          data.pop();
+	          response='<ol><li>' + data.join("</li><li>"); + '</li></ol>'
+
+	          }
 	          setResponseOnNode(response, responseNode);
 	      },
 	      error: function(error){
@@ -132,7 +142,7 @@
 
   function createResponseNode() {
     var node = document.createElement('div');
-    node.className = "clearfix right-align right card-panel blue-text text-darken-2 hoverable";
+    node.className = "clearfix left-align right card-panel blue-text text-darken-2 hoverable";
     node.innerHTML = "...";
     resultDiv.appendChild(node);
     return node;
