@@ -88,8 +88,8 @@ def get_task(task_id):
 
 def getTitle(text):
    title=list(lexnlp.nlp.en.segments.titles.get_titles(text))
-	raw_json = json.dumps(title)
-	return(raw_json)
+   raw_json = json.dumps(title)
+   return(raw_json)
 
 def getSuspicious(text):
 	noOfConditions=len(list(lexnlp.extract.en.conditions.get_conditions(text)))
