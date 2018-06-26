@@ -1,3 +1,5 @@
+Deployment is available at http://ec2-13-126-25-87.ap-south-1.compute.amazonaws.com:5000/
+
 1. pip install -r requirements.txt
 2. python test.py
 
