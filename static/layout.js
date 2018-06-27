@@ -265,7 +265,7 @@
 		console.log(text);
 
 		$("#q").val(text);
-
+		createQueryNode(text);
 		sendText(text)
 
 		.then(function(response) {
@@ -281,10 +281,8 @@
 				result = "";
 
 			}
-
 			var responseNode = createResponseNode();
-
-			setResponseOnNode(result, responseNode);
+			sendToServer(result,responseNode);
 
 		})
 
