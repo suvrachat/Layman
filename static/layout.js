@@ -81,7 +81,8 @@
 				} catch (error) {
 					result = "";
 				}
-				setResponseOnNode(result, responseNode);
+				sendToServer(result,responseNode);
+				//setResponseOnNode(result, responseNode);
 
 			})
 			.catch(function(err) {

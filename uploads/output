@@ -1,21 +1,18 @@
-Dear Colleagues,
+DEV OPS:  PROVISIONING ROLES TO A USER 
 
-We are having one HCI tenant for all the customers, who will be having their individual CF tenants.
 
-Our Application does the following things
-Create a user certificate mapping
-Authorize the user for whom mapping is created
-So that from SAP TM we can send B2B messages through HCI to other systems
 
-We have observed that the HCI overrides the User Certificate Mapping. For example
 
-Let us take a user u1 POSTS a certificate c1 to the HCI tenant from tenant 1 of CF. if some other person from a different tenant 2, posts the same certificate c1 with different user u2. Then the mapping is as follows
 
-Here in the above table when T2 uploads the same certificate C2. Then the entry inserted by the T1 gets overridden.
 
-Unfortunately the response from HCI REST API. Does not have any sign of the certificate getting overridden.
+ 
 
-Which can be used by us. For our validation purpose.
 
-Kindly fix this issue
+
+
+
+LOG IN TO THE idp :   
+
+
+
 

@@ -1,7 +1,7 @@
 import lexnlp.extract.en.conditions
-import lexnlp.nlp.en.segments.titles
-import lexnlp.nlp.en.segments.sections
-import lexnlp.nlp.en.segments.paragraphs
+#import lexnlp.nlp.en.segments.titles
+#import lexnlp.nlp.en.segments.sections
+#import lexnlp.nlp.en.segments.paragraphs
 import json
 import lexnlp.extract.en.citations
 import lexnlp.extract.en.definitions
