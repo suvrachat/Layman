@@ -90,7 +90,7 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'datefinder',
-        'nltk==3.2.4',
+        'nltk==3.4.5',
         'num2words==0.5.5',
         'pandas==0.21.0',
         'regex==2017.9.23',
